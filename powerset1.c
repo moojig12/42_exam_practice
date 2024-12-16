@@ -2,26 +2,29 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-void	powerset(int power, int *set, int idx, int *sub, int sub_idx, int size)
+int	print_numbers(int *print, int size, int mask)
 {
-	int	sum;
+	for (int i = 0; i < size; i++)
+	{
+		fprintf(stdout, "%i", print[i]);
+		if (i < size - 1)
+			fprintf(stdout, " ");
+	}
+	fprintf(stdout, "\n");
+}
 
-	sum = 0;
-	for (int i = 0; i < sub_idx; i++)
-	{
-		sum += sub[i];
-	}
-	if (sum == power)
-	{
-		print_nums(sub, sub_idx);
-	}
+void	powerset(int power, int *set, int *print, int size)
+{
+	int	mask;
+
+	
 }
 
 void	powerset_setup(int power, int *set, int size)
 {
 	int	print[size];
 
-	powerset(power, set, 0, print, 0, size);
+	powerset(power, set, print, size);
 }
 
 int	*parse(char **argv, int size)
