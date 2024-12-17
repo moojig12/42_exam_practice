@@ -16,6 +16,18 @@ int	str_len(char *string)
 	return (i);
 }
 
+void	str_copy(char *dest, char *origin)
+{
+	int	i = 0;
+
+	while (origin[i])
+	{
+		dest[i] = origin[i];
+		i++;
+	}
+	dest[i] = '\0';
+}
+
 int	rip(char *s, char *print, int idx, int open, int remove, int size)
 {
 	if (!s[idx]) {
@@ -38,18 +50,6 @@ int	rip(char *s, char *print, int idx, int open, int remove, int size)
 		rip(s, print, idx + 1, open, remove - 1, size);
 	}
 
-}
-
-void	str_copy(char *dest, char *origin)
-{
-	int	i = 0;
-
-	while (origin[i])
-	{
-		dest[i] = origin[i];
-		i++;
-	}
-	dest[i] = '\0';
 }
 
 void	wrapper(char *brackets, int size)

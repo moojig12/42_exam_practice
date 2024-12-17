@@ -2,60 +2,47 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int	print_numbers(int *print, int size)
+void check_print(int n, char **av, int *subset, int sub_size)
 {
-	for (int i = 0; i < size; i++)
+	int sum = 0;
+	for (int i = 0; i < sub_size; i++)
+		sum += atoi(av[subset[i]]);
+
+	if (sum == n)
 	{
-		fprintf(stdout, "%i", print[i]);
-		if (i < size - 1)
-			fprintf(stdout, " ");
+		for (int i = 0; i < sub_size; i++)
+		{
+			fprintf(stdout, "%s", av[subset[i]]);
+			if (i != sub_size - 1)
+				fprintf(stdout, " ");
+		}
+		fprintf(stdout, "\n");
 	}
-	fprintf(stdout, "\n");
 }
 
-void	find_subset(int *set, int size, int *subs, int subset_size, int index, int target)
+int	main(int ac, char **av)
 {
-	int	sum = 0;
-	for (int i = 0; i < subset_size; i++)
-		sum += subs[i];
-	if (sum == target)
-		print_numbers(subs, subset_size);
+	if (ac < 3)
+		exit(1);
+	int power = atoi(av[1]);
+	int	size = ac - 2;
+	int total_subsets = 1 << (size); // Equivalent to total_subsets = 2 ^ size;
 
-	if (index == size)
-		return ;
-
-	subs[subset_size] = set[index];
-	find_subset(set, size, subs, subset_size + 1, index + 1, target);
-
-	find_subset(set, size, subs, subset_size, index + 1, target);
-}
-
-int	powerset(int power, int *set, int *print, int size)
-{
-	find_subset(set, size, print, 0, 0, power);
-}
-
-int	*parse(char **argv, int argc)
-{
-	int	*buff;
-	int	i;
-
-	buff = malloc(sizeof(int) * (argc - 1));
-	i = 0;
-	while (argv[i])
+	for (int i = 1; i < total_subsets; i++)
 	{
-		buff[i] = atoi(argv[i]);
-		i++;
+		int subsets[size];
+		int subset_size = 0;
+
+		// Loop for printing from "i" mask
+		for (int j = 0; j < size; j++)
+		{
+			if (i & (1 << j))
+			{
+				// include j-th element of set av[2] to av[power]
+				subsets[subset_size++] = j + 2;
+			}
+		}
+		// Printing function using the subset mask
+		check_print(power, av, subsets, subset_size);
 	}
-	return (buff);
-}
-
-int	main(int argc, char **argv)
-{
-	int	*numbers;
-
-	numbers = parse(&argv[1], argc);
-	int	to_print[argc - 2];;
-	powerset(numbers[0], &numbers[1], to_print, argc - 2);
-	free(numbers);
 }
