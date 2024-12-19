@@ -56,7 +56,7 @@ int	ft_strlen(char *s)
 	return (i);
 }
 
-void	permute(char *s, int left, int right, int len)
+void	permute(char *s, int left, int right)
 {
 	if (left == right)
 	{
@@ -67,14 +67,14 @@ void	permute(char *s, int left, int right, int len)
 	for (int i = left; i <= right; i++)
 	{
 		ft_swap1(s, left, i);
-		permute(s, left + 1, right, len);
+		permute(s, left + 1, right);
 		ft_swap2(s, left, i);
 	}
 }
 
 void	permute_wrapper(char *s)
 {
-	permute(s, 0, ft_strlen(s) - 1, ft_strlen(s));
+	permute(s, 0, ft_strlen(s) - 1);
 }
 
 int	main(int argc, char **argv)
