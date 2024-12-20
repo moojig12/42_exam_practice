@@ -49,7 +49,6 @@ int	rip(char *s, char *print, int idx, int open, int remove, int size)
 		print[idx] = ' ';
 		rip(s, print, idx + 1, open, remove - 1, size);
 	}
-
 }
 
 void	wrapper(char *brackets, int size)
