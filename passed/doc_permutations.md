@@ -8,7 +8,7 @@ Write a program that will print all the permutations of a string given as argume
 
 The solutions must be given in alphabetical order.
 
-We will not try your program with strings containing duplicates (eg: 'abccd').
+We will not try your program with wstrings containing duplicates (eg: 'abccd').
 
 For example this should work:
 

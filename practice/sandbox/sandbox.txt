@@ -1,0 +1,8 @@
+sandbox:
+Sandbox: create a function that test other functions, is they are good or bad functions. Returns 1 if good, 0 if not. And -1 if there is an error within your ft.
+It will be prototype.
+int sandbox(void (*f)(void), unsigned int timeout, bool verbose)
+Ft is bad if terminated or so by signal(segfault, abort, …), if exits  with any other code than 0 or  is time out
+If verbose is true must write a msg saying, nice ft, error <exit code>, error<signal description >, error<timeouts>seconds
+fts allowed are;
+Fork, waitpid, exit, alarm, sigaction, kill, printf, strsignal, errno

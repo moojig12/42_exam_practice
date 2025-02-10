@@ -1,6 +1,13 @@
 #include <stdio.h>
 #include <unistd.h>
 
+int	ft_strlen(char *s)
+{
+	int	i = 0;
+	while (s[i]) i++;
+	return i;
+}
+
 void	ft_swap(char *a, char *b)
 {
 	char	temp;
@@ -52,13 +59,6 @@ void	permute(char *set, int left, int right)
 		permute(set, left + 1, right);
 		ft_swap2(set, left, i);
 	}
-}
-
-int	ft_strlen(char *s)
-{
-	int	i = 0;
-	while (s[i]) i++;
-	return i;
 }
 
 int	main(int argc, char **argv)

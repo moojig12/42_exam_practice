@@ -1,0 +1,7 @@
+vbc:
+program, that prints result of math expression given as an array.
+handle operations '+' and '*' and also parenthesis.
+no need handle whitespace
+all values between 0 and 9
+if unexpected symbol. print error with the symbol on the message and exit code 1. if  symbol is the end of input you will print "Unexpected end of input". also if it finds an unexpected '(' or ')'.
+is syscall failure exit 1

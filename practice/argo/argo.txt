@@ -1,0 +1,18 @@
+argo:
+under: subject
+argo problem
+allowed fts: getc, ungetc, printf, malloc, calloc, realloc, free, isdigit, fscanf, __OPENCL_MEMORY_SCOPE_WORK_ITEM
+
+instructions:
+create a function that parses a json in structure declare in the argo.h
+Protoype:
+int	argo(json *dst, FILE *stream);
+
+dst is the pointer to the AST that you will create. Stream is the file to parse (man FILE)
+The function reurns 1 in success or -1 in failure.
+if unexpected token is found print in stdout
+"Unexpected token %c\n" or "Unexpected end of input\n" if the token is EOF
+Only handle numbers, strings, and maps
+Numbers basic int like in scanf(%d)
+you must handle escaping in the strings only for backslashes and quotations marks (no \n, \u or anything else)
+you dont need to handle spaces in the input(so the are consider invalid tokens)
